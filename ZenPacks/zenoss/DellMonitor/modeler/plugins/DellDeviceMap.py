@@ -12,6 +12,8 @@
 ###########################################################################
 
 from Products.DataCollector.plugins.CollectorPlugin import SnmpPlugin, GetMap
+from Products.DataCollector.plugins.DataMaps import MultiArgs
+import re
 
 class DellDeviceMap(SnmpPlugin):
     """Map mib elements from Dell Open Manage mib to get hw and os products.
@@ -33,4 +35,9 @@ class DellDeviceMap(SnmpPlugin):
         getdata, tabledata = results
         if getdata['setHWProductKey'] is None: return None
         om = self.objectMap(getdata)
+        om.setHWProductKey = MultiArgs(om.setHWProductKey, "Dell")
+        if re.search(r'Microsoft', om.setOSProductKey, re.I):
+            om.setOSProductKey = MultiArgs(om.setOSProductKey, "Microsoft")
+        elif re.search(r'Red\s*Hat', om.setOSProductKey, re.I):
+            om.setOSProductKey = MultiArgs(om.setOSProductKey, "RedHat")
         return om

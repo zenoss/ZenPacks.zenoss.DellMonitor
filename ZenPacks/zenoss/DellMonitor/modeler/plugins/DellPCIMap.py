@@ -13,6 +13,7 @@
 
 from Products.DataCollector.plugins.CollectorPlugin import SnmpPlugin, \
         GetTableMap
+from Products.DataCollector.plugins.DataMaps import MultiArgs
 
 class DellPCIMap(SnmpPlugin):
     """Map Dell Open Manage PCI table to model."""
@@ -27,7 +28,7 @@ class DellPCIMap(SnmpPlugin):
     snmpGetTableMaps = (
         GetTableMap('pciTable', '.1.3.6.1.4.1.674.10892.1.1100.80.1', columns),
     )
-
+    
     def process(self, device, results, log):
         """collect snmp information from this device"""
         log.info('processing %s for device %s', self.name(), device.id)
@@ -39,7 +40,7 @@ class DellPCIMap(SnmpPlugin):
             try:
                 om = self.objectMap(card)
                 om.id = self.prepId("%s" % om.slot)
-                om.setProductKey = "%s %s" % (om._manuf, om._model)
+                om.setProductKey = MultiArgs(om._model, om._manuf)
             except AttributeError:
                 continue
             rm.append(om)

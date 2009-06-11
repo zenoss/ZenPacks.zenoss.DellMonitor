@@ -11,8 +11,10 @@
 #
 ###########################################################################
 
-from Products.DataCollector.plugins.CollectorPlugin import SnmpPlugin, \
-        GetTableMap
+from Products.DataCollector.plugins.CollectorPlugin \
+    import SnmpPlugin, GetTableMap
+from Products.DataCollector.plugins.zenoss.snmp.CpuMap \
+    import getManufacturerAndModel
 
 class DellCPUMap(SnmpPlugin):
     """Map Dell Open Manage cpu table to model."""
@@ -57,7 +59,8 @@ class DellCPUMap(SnmpPlugin):
             except IndexError: cpufam = ""
             if not cpufam.startswith(om._manuf):
                 cpufam = om._manuf + " " + cpufam
-            om.setProductKey =  cpufam + " " + om._version
+            om.setProductKey = getManufacturerAndModel(
+                cpufam + " " + om._version)
             om.title = "%s_%s" % (om._manuf, om.socket)
             om.id = self.prepId(om.title)
             cpumap[om.socket] = om
