@@ -11,6 +11,10 @@
 #
 ###########################################################################
 
+__doc__ = """DellDeviceMap
+Gather Dell Open Manage hardware model + serial number and OS information.
+"""
+
 from Products.DataCollector.plugins.CollectorPlugin import SnmpPlugin, GetMap
 from Products.DataCollector.plugins.DataMaps import MultiArgs
 import re

@@ -11,6 +11,10 @@
 #
 ###########################################################################
 
+__doc__ = """DellCPUMap
+Gather Dell Open Manage processor information.
+"""
+
 from Products.DataCollector.plugins.CollectorPlugin \
     import SnmpPlugin, GetTableMap
 from Products.DataCollector.plugins.zenoss.snmp.CpuMap \

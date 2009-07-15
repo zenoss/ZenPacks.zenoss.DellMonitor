@@ -11,6 +11,10 @@
 #
 ###########################################################################
 
+__doc__ = """DellPCIMap
+Use Dell Open Manage to determine expansion slot information.
+"""
+
 from Products.DataCollector.plugins.CollectorPlugin import SnmpPlugin, \
         GetTableMap
 from Products.DataCollector.plugins.DataMaps import MultiArgs
