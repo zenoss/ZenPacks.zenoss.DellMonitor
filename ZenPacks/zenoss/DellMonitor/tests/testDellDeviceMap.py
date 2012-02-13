@@ -23,8 +23,8 @@ log = logging.getLogger("zen.testcases")
 
 
 class TestDellDeviceMap(BaseTestCase):
-    def setUp(self):
-        BaseTestCase.setUp(self)
+    def afterSetUp(self):
+        super(TestDellDeviceMap, self).afterSetUp()
         self.adm = ApplyDataMap()
         self.ddmap = DellDeviceMap()
         self.device = self.dmd.Devices.createInstance('testDevice')
