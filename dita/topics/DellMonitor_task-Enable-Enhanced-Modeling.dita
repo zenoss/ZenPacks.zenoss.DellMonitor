@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task
+  PUBLIC "urn:pubid:zenoss.com:doctypes:dita:dtd:task" "task.dtd">
+<task id="d18e114"><title>Enable Enhanced Modeling</title><taskbody><context><p>To enable modeling:</p></context><steps-informal><ol>
+      <li>
+        <p>Select Infrastructure from the navigation bar.</p>
+      </li>
+
+      <li>
+        <p>Click the device name in the device list.</p>
+
+        <p>The device overview page appears.</p>
+      </li>
+
+      <li>
+        <p>Select Modeler Plugins from the left panel.</p>
+      </li>
+
+      <li>
+        <p>Click <uicontrol outputclass="guilabel">Add Fields</uicontrol> to reveal the list of
+        available plugins.</p>
+      </li>
+
+      <li>
+        <p>Select the following plugins from the Available fields list, and
+        then drag them to the Plugins list:</p>
+
+        <ul>
+          <li>
+            <p>DellCPUMap</p>
+          </li>
+
+          <li>
+            <p>DellDeviceMap</p>
+          </li>
+
+          <li>
+            <p>DellPCIMap</p>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <p>Remove the following plugins by clicking on the 'X' button
+        located to the right of the plugin.</p>
+
+        <ul>
+          <li>
+            <p>zenoss.snmp.CpuMap</p>
+          </li>
+
+          <li>
+            <p>zenoss.snmp.DeviceMap</p>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <p>Click <uicontrol outputclass="guibutton">Save</uicontrol> to save the updates.</p>
+      </li>
+
+      <li>
+        <p>Remodel the device using these new plugins by selecting Model
+        Device from the Action menu.</p>
+      </li>
+    </ol></steps-informal></taskbody></task>
